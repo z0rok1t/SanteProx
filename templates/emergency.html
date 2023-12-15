@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Santé Prox | Urgence
+{% endblock %}
+
+{% block body %}
+<section class="text-center">
+  <div class="container p-5">
+      <h1 style="color: red;"><i class="fa-solid fa-triangle-exclamation" style="color: #d11f31;"></i> URGENCE</h1>
+
+      <form action="#" method="post" enctype="multipart/form-data">
+          <ul class="list-unstyled" id="messages">
+          </ul>
+
+          <div class="form-outline">
+              <textarea class="form-control" id="textAreaExample2" name="message" rows="4"></textarea>
+              <label class="form-label" for="textAreaExample2"></label>
+          </div>
+
+          <label for="locationInput" class="form-label">Location:</label>
+          <textarea class="form-control" id="locationInput" name="location" rows="1" required></textarea>
+
+          <div id="selected_files"></div>
+
+          <input type="file" id="imageInput" name="image" style="display: none;" accept="image/*">
+          <button type="button" class="btn btn-info" onclick="document.getElementById('imageInput').click();">Uploader une image</button>
+
+          <button onclick="UrgenceLocation()" type="button" class="btn btn-warning">Obtenir la localisation</button>
+
+          <button type="submit" class="btn btn-success">Send</button>
+      </form>
+  </div>
+</section>
+<script>
+function UrgenceLocation() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(fillLocation, handleError);
+  } else {
+      alert("Geolocation is not supported by this browser.");
+  }
+  function fillLocation(position) {
+    var data = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+    };
+    document.getElementById("locationInput").innerText=JSON.stringify(data);
+}
+
+function handleError(error) {
+    console.error("Error getting location:", error.message);
+}
+
+}</script>
+
+{% endblock %}

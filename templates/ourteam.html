@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Our Team{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/ourteam.css') }}">
+<div class="responsive-container-block outer-container">
+    <div class="responsive-container-block inner-container">
+      <p class="text-blk section-head-text">
+        Meet Our Team
+      </p>
+    
+      <div class="responsive-container-block">
+        <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 team-card-container">
+          <div class="team-card">
+            <div class="img-wrapper">
+              <img class="team-img" src="{{ url_for('static',filename='images/elhoussaine.jpg') }}">
+            </div>
+            <p class="text-blk name">
+              Elhoussaine AIT WAHMMAN
+            </p>
+            <p class="text-blk position">
+              Étudiant
+            </p>
+            <div class="social-media-links">
+              <a href="https://github.com/z0rok1t" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-github.svg') }}">
+              </a>
+              <a href="https://www.linkedin.com/in/elhoussaineaitwahman/" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-linkedin.svg') }}">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 team-card-container">
+          <div class="team-card">
+            <div class="img-wrapper">
+              <img class="team-img" src="{{ url_for('static',filename='images/abdelghafour.jpg') }}">
+            </div>
+            <p class="text-blk name">
+              Abdelghafour BOUHDYD
+            </p>
+            <p class="text-blk position">
+              Étudiant
+            </p>
+            <div class="social-media-links">
+              <a href="https://github.com/abdelghafuuur" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-github.svg') }}">
+              </a>
+              <a href="https://www.linkedin.com/in/abdelghafourbouhdyd/" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-linkedin.svg') }}">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 team-card-container">
+          <div class="team-card">
+            <div class="img-wrapper">
+              <img class="team-img" src="{{ url_for('static',filename='images/smail.jpg') }}">
+            </div>
+            <p class="text-blk name">
+              Smail BOUSRAF
+            </p>
+            <p></p>
+            
+            <p class="text-blk position" style="margin-top: 10px">
+              Étudiant
+            </p>
+            
+            <div class="social-media-links" style="margin-top: -1px;">
+              <a href="https://github.com/Mr99ail" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-github.svg') }}">
+              </a>
+              <a href="https://www.linkedin.com/in/bousraf-smail/" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-linkedin.svg') }}">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 team-card-container">
+          <div class="team-card">
+            <div class="img-wrapper">
+              <img class="team-img" src="{{ url_for('static',filename='images/ismail.jpg') }}">
+            </div>
+            <p class="text-blk name">
+              Ismail IARABEN
+            </p>
+            <p></p>
+            <p class="text-blk position" style="margin-top: 10px">
+              Étudiant
+            </p>
+            <div class="social-media-links" style="margin-top: -1px;">
+              <a href="https://github.com/ii5mai1" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-github.svg') }}">
+              </a>
+              <a href="#" target="_blank">
+                <img src="{{ url_for('static',filename='images/icons8-linkedin.svg') }}">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="mb-4" id="contactus">
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Contactez-nous</h2>
+    <p class="text-center w-responsive mx-auto mb-5">Avez-vous des questions ? N'hésitez pas à nous contacter directement. Notre équipe reviendra vers vous dans un délai de quelques heures pour vous aider.</p>
+  
+    <div class="row">
+      <form id="contact-form" name="contact-form" action="#" method="POST">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <label for="name" class="">Votre nom</label>
+              <input type="text" id="name" name="name" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <label for="email" class="">Votre e-mail</label>
+              <input type="text" id="email" name="email" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form mb-0">
+              <label for="subject" class="">Sujet</label>
+              <input type="text" id="subject" name="subject" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form">
+              <label for="message">Votre message</label>
+              <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+  
+      <div class="text-center text-md-left">
+        <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Envoyer</a>
+      </div>
+      <div class="status"></div>
+    </div>
+  </section>
+  
+
+
+{% endblock %}

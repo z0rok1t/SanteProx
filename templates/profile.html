@@ -1,0 +1,44 @@
+{% extends 'base.html' if current_user==None and corrent_user.type=='client' else 'baseService.html' %}
+
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles_user.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{ url_for('static',filename='images/'+img) }}"><span class="font-weight-bold">{{ current_user.username }}</span><span class="text-black-50">{{ current_user.email }}</span><span>{{current_user.date_inscription}}</span></div>
+        </div>
+        <div class="col-md-9 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <form action="{{ url_for('updateprofile') }}" method="post">
+                    <div class="row mt-2">
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" placeholder="entrez username" value="{{ current_user.username }}" name="username"></div>
+                        <div class="col-md-12"><label class="labels">Addresse Mail</label><input type="text" class="form-control" placeholder="entrez addresse mail" value="{{ ''+current_user.email }}" name="address"></div>
+                        <div class="col-md-12"><label class="labels">No de telephone</label><input type="tel" class="form-control" placeholder="entrez le numero de telephone" value="{{ current_user.phone_number }}" name="telephone"></div>
+                        <div class="col-md-12"><label class="labels">Le nom complet</label><input type="text" class="form-control" placeholder="entrez le nom complet" value="{{ current_user.full_name }}" name="fullname"></div>
+    
+                        <div class="col-md-12"><label class="labels">password</label><input type="password" class="form-control" placeholder="entrez le password" value="" name="password"></div>
+                        <div class="col-md-12"><label class="labels">repetez password</label><input type="password" class="form-control" placeholder="entrez le password" value="" name="rpassword"></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-secondary profile-button" type="submit">Sauvegarder les modifications</button></div>
+                
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

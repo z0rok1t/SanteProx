@@ -1,0 +1,84 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Nom du Service
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="text-center">
+        {% if pharmacie %}
+            <h2>{{ pharmacie.name }}</h2>
+        {% else %}
+            <h2>{{ hopital.name }}</h2>
+        {% endif %}
+    </div>
+
+    <div class="rectangle mt-4">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="info-box">
+                    {% if pharmacie %}
+                        <h6>Contact: {{ pharmacie.phone_number }}</h6>
+                        <h6>Adresse: {{ pharmacie.address }}</h6>
+                        <h6><a href="https://www.google.com/maps/place/{{ pharmacie.location }}">Localisation</a></h6>
+                    {% else %}
+                        <h6>{{ hopital.name }}</h6>
+                        <h6>Type: {{ hopital.type }}</h6>
+                        <h6><a href="https://www.google.com/maps/place/{{ hopital.location }}">Localisation</a></h6>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <h3>Commentaires</h3>
+    </div>
+
+    <div class="comment-section mx-auto">
+        {% for comment in comments %}
+        <div class="comment rectangle">
+            <div class="username">{{get_username(comment.user_id).username}}</div>
+            <p>{{ comment.commentaire }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2>Ajouter un commentaire</h2>
+    <form method="POST" action="{{ url_for('serviceinfo', id=id) }}">
+        <div class="rectangle comment-input">
+            <textarea name="comment" rows="2" style="resize: vertical; width: 70%;"></textarea>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+<style>
+    .rectangle {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .info-box {
+        margin-bottom: 10px;
+    }
+
+    .comment-section {
+        margin-top: 20px;
+        width: 40%;
+    }
+
+    .username {
+        font-weight: bold;
+        margin-top: 0;
+        text-align: left;
+    }
+</style>
+
+{% endblock %}
